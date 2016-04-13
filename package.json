@@ -1,0 +1,30 @@
+{
+  "name": "pomodoro",
+  "version": "1.1.0-setup",
+  "description": "Pomodoro technique app based on Node.JS, MongoDB and jQuery to teach Full Stack Development in 8 hours on Codementor",
+  "main": "app.js",
+  "scripts": {
+    "test": "PORT=2000 mocha --reporter spec --timeout 5000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gianpaj/pomodoro.git"
+  },
+  "author": "Gianfranco Palumbo <hi@gian.xyz>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gianpaj/pomodoro/issues"
+  },
+  "homepage": "https://github.com/gianpaj/pomodoro#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "mocha": "^2.4.5",
+    "supertest": "^1.2.0"
+  },
+  "dependencies": {
+    "express": "^4.13.4",
+    "jade": "^1.11.0",
+    "path": "^0.12.7"
+  }
+}
