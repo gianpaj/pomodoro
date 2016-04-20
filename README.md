@@ -46,7 +46,22 @@ $ eslint --init
 
 ### Directory Structure
 ```
-
+.
+├── LICENSE
+├── README.md
+├── app.js
+├── gulpfile.js
+├── package.json
+├── public
+│   ├── css
+│   │   └── main.css
+│   └── js
+│       └── main.js
+├── test
+│   └── app.js
+└── views
+    ├── home.jade
+    └── layout.jade
 ```
 
 ### Testing
