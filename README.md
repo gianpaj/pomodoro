@@ -16,7 +16,7 @@ Install NPM dependencies
 
 Run the web server
 
-    npm app.js
+    node app.js
 
 (optiona) Install `nodemon` to automatically restart the node app when a file is updated
 
