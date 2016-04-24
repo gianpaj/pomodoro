@@ -6,7 +6,7 @@
 
 ## 1. Local development setup
 
-Clone the repository from the brach of the first week
+Clone the repository from the branch of the first week
 
     git clone --branch w1.1-setup git@github.com:gianpaj/pomodoro.git
 
@@ -18,7 +18,7 @@ Run the web server
 
     node app.js
 
-(optiona) Install `nodemon` to automatically restart the node app when a file is updated
+(optional) Install `nodemon` to automatically restart the node app when a file is updated
 
     npm install nodemon --global
 
@@ -28,7 +28,7 @@ Run nodemon
 
 ## 2. Eslint
 
-This are the style rules for this project (`.eslintrc.json`). Remember everything is subjective and susceptible to taste.
+This is the style rules for this project (`.eslintrc.json`). Remember everything is subjective and susceptible to taste.
 
 ```
 $ eslint --init
