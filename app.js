@@ -32,7 +32,7 @@ app.get('/', function(req, res) {
  * catch route not found and return 404 status
  */
 app.use(function(req, res) {
-  res.status(404).send('Sorry cant find that!');
+  res.status(404).send('Sorry can\'t find that!');
 });
 
 /**
