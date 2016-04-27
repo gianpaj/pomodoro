@@ -8,7 +8,7 @@
 
 Clone the repository from the branch of the first week
 
-    git clone --branch w1.1-setup git@github.com:gianpaj/pomodoro.git
+    git clone --branch w1 git@github.com:gianpaj/pomodoro.git
 
 Install NPM dependencies
 
