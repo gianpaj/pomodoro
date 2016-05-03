@@ -2,7 +2,7 @@
 
 
 
-# Week 1
+# Week 3
 
 ## 1. Local development setup
 
@@ -50,6 +50,11 @@ $ eslint --init
 ├── LICENSE
 ├── README.md
 ├── app.js
+├── config
+│   └── passport.js
+├── db
+│   ├── index.js
+│   └── users.js
 ├── gulpfile.js
 ├── package.json
 ├── public
@@ -61,7 +66,8 @@ $ eslint --init
 │   └── app.js
 └── views
     ├── home.jade
-    └── layout.jade
+    ├── layout.jade
+    └── login.jade
 ```
 
 ### Testing
