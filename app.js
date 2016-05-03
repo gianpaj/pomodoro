@@ -30,9 +30,14 @@ app.use(bodyParser.urlencoded({   // to support URL-encoded bodies
 }));
 
 // required for passport
-app.use(session({ secret: 'nPgedMGXm7DyPvJZFVzQxT5avVaCavxEKfFUTTr5s2NSaMMphTmuYUFdJRsZwcGS7UFpf8hFcrjkeuNQdJzxhdHRgBkMbk222cZa' })); // session secret
+app.use(session({
+  secret: 'nPgedMGXm7DyPvJZFVzQxT5avVaCavxEKfFUTTr5s2NSaMMphTmuYUFdJRsZwcGS7UFpf8hFcrjkeuNQdJzxhdHRgBkMbk222cZa',
+  resave: true,
+  saveUninitialized: true
+}));
 app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
+// persistent login sessions
+app.use(passport.session());
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 // to access the user variable from the account route
@@ -50,7 +55,7 @@ app.use(express.static(path.join(__dirname, 'public')));
  * Primary app route
  */
 app.get('/', function(req, res) {
-  res.render('home', { title: 'Pomodoro app - Codementor' });
+  res.render('home', { title: 'Pomodoro app - Codementor', header: 'We are on week two!' });
 });
 
 /**
