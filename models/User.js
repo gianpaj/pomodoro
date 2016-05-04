@@ -73,5 +73,6 @@ userSchema.methods.gravatar = function(size) {
 };
 
 var User = mongoose.model('User', userSchema);
+User.Pomodoro = mongoose.model('Pomodoro', pomodoroSchema);
 
 module.exports = User;

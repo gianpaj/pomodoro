@@ -137,9 +137,14 @@ app.get('/register', function(req, res) {
 app.post('/register', function(req, res, next) {
   // TODO validate email and password
 
+  var pomodoro = new User.Pomodoro({
+    secondsLength: 1500
+  });
+
   var user = new User({
     email:    req.body.email,
-    password: req.body.password
+    password: req.body.password,
+    pomodoros: [pomodoro]
   });
 
   User.findOne({ email: req.body.email }, function(err, existingUser) {

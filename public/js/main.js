@@ -61,4 +61,6 @@ $(document).ready(function() {
     $timer.text('00:00');
     clearInterval(counterFn);
   });
+
+  $('#pomodoros').val(localStorage.getItem('pomodoros'));
 });
