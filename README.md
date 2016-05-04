@@ -14,11 +14,13 @@
 
 ### Install MongoDB
 
-  1. Follow these instructions:
-   https://www.mongodb.org/downloads
-  2. Start mongod process:
+1. Follow these instructions:
+  
+    https://www.mongodb.org/downloads
 
-    mongod
+2. Start mongod process:
+
+        mongod
 
 ## 1. Local development setup
 
