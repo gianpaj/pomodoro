@@ -6,9 +6,7 @@ block content
         h3= header
         p.lead A boilerplate for Node.js web applications.
         hr
-        if errors
-            for error in errors
-                p.text-danger= error.msg
+
         if !user
             form.form-inline(action='/login', method="post")
                 input.form-control(placeholder="username", name='username', id='username', required)

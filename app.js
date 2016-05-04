@@ -43,6 +43,10 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 // to access the user variable from the account route
 app.use(function(req, res, next) {
   res.locals.user = req.user;
+  res.locals.messages = {};
+  res.locals.messages.info = req.flash('info');
+  res.locals.messages.errors = req.flash('errors');
+  res.locals.messages.success = req.flash('success');
   next();
 });
 
@@ -62,7 +66,7 @@ app.get('/', function(req, res) {
  * GET Login route
  */
 app.get('/login', function(req, res) {
-  res.render('login', { title: 'Pomodoro app - Codementor', errors: req.flash('errors')});
+  res.render('login', { title: 'Pomodoro app - Codementor' });
 });
 
 /**
@@ -94,7 +98,6 @@ app.post('/login', function(req, res, next) {
     });
   })(req, res, next);
 });
-
 
 app.get('/logout',
   function(req, res){

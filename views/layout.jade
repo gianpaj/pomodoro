@@ -13,6 +13,9 @@ html
     .container
         nav.navbar.navbar-default
             .container-fluid
+                ul.nav.navbar-nav
+                    li
+                        a(href="/") Home
                 ul.nav.navbar-nav.navbar-right
                     if !user
                         li
@@ -24,6 +27,8 @@ html
                             ul.dropdown-menu
                                 li
                                     a(href="/logout") Logout
+
+        include flash
         block content
 
     script(src='https://code.jquery.com/jquery-2.2.3.min.js', integrity='sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb', crossorigin='anonymous')
