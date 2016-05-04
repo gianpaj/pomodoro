@@ -170,6 +170,35 @@ app.get('/account', passportConfig.isAuthenticated, function(req, res) {
 });
 
 /**
+ * POST Account
+ */
+app.post('/account', passportConfig.isAuthenticated, function(req, res, next) {
+  // TODO validate email and password
+
+  User.findById(req.user.id, function(err, user) {
+    if (err) {
+      return next(err);
+    }
+    user.email = req.body.email || '';
+    user.profile.name = req.body.name || '';
+    user.profile.gender = req.body.gender || '';
+    user.profile.location = req.body.location || '';
+    user.profile.website = req.body.website || '';
+    user.save(function(err) {
+      if (err) {
+        if (err.code === 11000) {
+          req.flash('errors', { msg: 'The email address you have entered is already associated with an account.' });
+          return res.redirect('/account');
+        } else {
+          return next(err);
+        }
+      }
+      req.flash('success', { msg: 'Profile information updated.' });
+      res.redirect('/account');
+    });
+  });
+});
+/**
  * catch route not found and return 404 status
  */
 app.use(function(req, res) {

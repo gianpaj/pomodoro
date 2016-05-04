@@ -13,4 +13,35 @@ block content
                 input.form-control(placeholder="password", name='password', id='password', type='password', required)
                 button.btn.btn-default(type="submit") Submit
         else
-            p Welcome back #{user.displayName}
+            h4 Welcome back #{user.profile.name}
+            hr
+            p You have done #{user.pomodoros.length} pomodoros
+            br
+            p You registered on #{user.registrationDate}
+            hr
+            form.form-horizontal(action='/account', method='POST')
+                .form-group
+                    label.col-sm-3.control-label(for='email') Email
+                    .col-sm-7
+                        input.form-control(type='email', name='email', id='email', value='#{user.email}')
+                .form-group
+                    label.col-sm-3.control-label(for='name') Name
+                    .col-sm-7
+                        input.form-control(type='text', name='name', id='name', value='#{user.profile.name}')
+                .form-group
+                    label.col-sm-3.control-label(for='location') Location
+                    .col-sm-7
+                        input.form-control(type='text', name='location', id='location', value='#{user.profile.location}')
+                .form-group
+                    label.col-sm-3.control-label(for='website') Website
+                    .col-sm-7
+                        input.form-control(type='text', name='website', id='website', value='#{user.profile.website}')
+                .form-group
+                    label.col-sm-3.control-label(for='gravatar') Gravatar
+                    .col-sm-4
+                        img(src="#{user.gravatar()}", class='profile', width='100', height='100')
+                .form-group
+                    .col-sm-offset-3.col-sm-4
+                        button.btn.btn.btn-primary(type='submit')
+                            i.fa.fa-pencil
+                            | Update Profile
