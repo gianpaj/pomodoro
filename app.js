@@ -108,6 +108,8 @@ app.get('/logout',
 app.get('/account', passportConfig.isAuthenticated, function(req, res) {
   res.render('login', { title: 'Account - Pomodoro app - Codementor' });
 });
+
+/**
  * catch route not found and return 404 status
  */
 app.use(function(req, res) {
