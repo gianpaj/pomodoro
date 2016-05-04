@@ -24,9 +24,9 @@
 
 ## 1. Local development setup
 
-Clone the repository from the branch of the first week
+Clone the repository from the branch of the third week
 
-    git clone --branch w1 git@github.com:gianpaj/pomodoro.git
+    git clone --branch w3 git@github.com:gianpaj/pomodoro.git
 
 Install NPM dependencies
 
