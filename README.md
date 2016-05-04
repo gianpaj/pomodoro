@@ -68,10 +68,9 @@ $ eslint --init
 ├── app.js
 ├── config
 │   └── passport.js
-├── db
-│   ├── index.js
-│   └── users.js
 ├── gulpfile.js
+├── models
+│   └── User.js
 ├── package.json
 ├── public
 │   ├── css
@@ -81,9 +80,11 @@ $ eslint --init
 ├── test
 │   └── app.js
 └── views
+    ├── flash.jade
     ├── home.jade
     ├── layout.jade
-    └── login.jade
+    ├── login.jade
+    └── register.jade
 ```
 
 ### Testing
