@@ -31,8 +31,20 @@ $(document).ready(function() {
       if (timer.asSeconds() == 1500) {
         clearInterval(counterFn);
         console.log('a pomodoro has passed');
+        $('#registerModal').modal();
       }
     }, 1000);
+  });
+
+  $('#registerBtn').click(function () {
+    $('#registerModal').modal('hide');
+    // add a completed pomodoro to localStorage
+    var pomodoros = localStorage.getItem('pomodoros');
+    if (!pomodoros) {
+      pomodoros = 0;
+    }
+    localStorage.setItem('pomodoros', ++pomodoros);
+    // window.location = '/register';
   });
 
   $('#stop').click(function() {

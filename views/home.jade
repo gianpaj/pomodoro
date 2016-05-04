@@ -12,3 +12,16 @@ block content
     button.startStop(id="stop", style="display: none").btn.btn-danger Stop
     | &nbsp;
     button(id="reset").btn.btn-default Reset
+
+    .modal.fade(tabindex="-1", role="dialog", id="registerModal")
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button.close(type="button" data-dismiss="modal" aria-label="Close")
+                        span(aria-hidden="true") &times;
+                    h4.modal-title Register to save your progress?
+                .modal-body
+                    p If you register you can save this pomorodo and all future ones. Sounds good?
+                .modal-footer
+                    button.btn.btn-default(type="button", data-dismiss="modal") Nope
+                    button.btn.btn-primary(type="button", id="registerBtn") Yes please
