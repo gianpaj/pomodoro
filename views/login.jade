@@ -15,7 +15,18 @@ block content
         else
             h4 Welcome back #{user.profile.name}
             hr
-            p You have done #{user.pomodoros.length} pomodoros
+            p You have done #{user.pomodoros.length} pomodoro(s)
+            if user.pomodoros.length
+                table.table.table-striped(style="max-width: 400px;")
+                    thead
+                        tr
+                            th Date Finished
+                            th Length
+                    tbody
+                        for p in user.pomodoros
+                            tr
+                                td #{p.dateFinished}
+                                td #{p.secondsLength}
             br
             p You registered on #{user.registrationDate}
             hr
