@@ -6,7 +6,7 @@ var pomodoroSchema = new mongoose.Schema({
   dateStarted: Date,
   dateFinished: { type: Date, default: Date.now },
   secondsLength: Number,
-  type: { type: String, default: 'pomodoro' } // or /"shortbreak"/"longbreak"
+  type: { type: String, default: 'pomodoro' } // or shortbreak, longbreak
 });
 
 var userSchema = new mongoose.Schema({
