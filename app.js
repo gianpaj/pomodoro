@@ -7,6 +7,9 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var flash = require('connect-flash');
 var passport = require('passport');
+var mongoose = require('mongoose');
+
+var User = require('./models/User');
 
 /**
  * API keys and Passport configuration.
@@ -48,6 +51,15 @@ app.use(function(req, res, next) {
   res.locals.messages.errors = req.flash('errors');
   res.locals.messages.success = req.flash('success');
   next();
+});
+
+/**
+ * Connect to MongoDB.
+ */
+mongoose.connect('mongodb://localhost/pomodoro');
+mongoose.connection.on('error', function() {
+  console.log('MongoDB Connection Error. Please make sure that MongoDB is running.');
+  process.exit(1);
 });
 
 /**
@@ -104,6 +116,51 @@ app.get('/logout',
     req.logout();
     res.redirect('/');
   });
+
+/**
+ * GET /register
+ * Signup page.
+ */
+app.get('/register', function(req, res) {
+  if (req.user) {
+    return res.redirect('/');
+  }
+  res.render('register', {
+    title: 'Create Account'
+  });
+});
+
+/**
+ * POST /register
+ * Create a new local account.
+ */
+app.post('/register', function(req, res, next) {
+  // TODO validate email and password
+
+  var user = new User({
+    email:    req.body.email,
+    password: req.body.password
+  });
+
+  User.findOne({ email: req.body.email }, function(err, existingUser) {
+    if (existingUser) {
+      req.flash('errors', { msg: 'Account with that email address already exists.' });
+      return res.redirect('/register');
+    }
+
+    user.save(function(err) {
+      if (err) {
+        return next(err);
+      }
+      req.logIn(user, function(err) {
+        if (err) {
+          return next(err);
+        }
+        res.redirect('/');
+      });
+    });
+  });
+});
 
 /**
  * GET Account

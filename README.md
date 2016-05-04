@@ -4,6 +4,22 @@
 
 # Week 3
 
+## New packages
+
+- [mongoose](http://mongoosejs.com/docs/guide.html) to connect to MongoDB
+- [bcrypt-nodejs](https://www.npmjs.com/package/bcrypt-nodejs) to encrypt and decrypt passwords and not save them in plain text
+- [crypto](https://nodejs.org/api/crypto.html) (built into Node.js) to generate the md5 hash for the Gravatar image
+
+## New instructions
+
+### Install MongoDB
+
+  1. Follow these instructions:
+   https://www.mongodb.org/downloads
+  2. Start mongod process:
+
+    mongod
+
 ## 1. Local development setup
 
 Clone the repository from the branch of the first week

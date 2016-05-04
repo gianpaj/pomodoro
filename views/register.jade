@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    div.container
+        h1= title
+        h3= header
+        p.lead A boilerplate for Node.js web applications.
+        hr
+
+        form.form-inline(method="post")
+            input.form-control(placeholder="email", name="email", id="email", required)
+            input.form-control(placeholder="password", name="password", id="password", type="password", required)
+            input(type="hidden", id="pomodoros")
+            button.btn.btn-default(type="submit") Submit

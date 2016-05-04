@@ -20,11 +20,16 @@ html
                     if !user
                         li
                             a(href="/login") Login
+                        li
+                            a(href="/register") Register
                     else
                         li.dropdown
-                            a.dropdown-toggle(data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false") Hi #{user.displayName}
+                            a.dropdown-toggle(data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false") Hi #{user.profile.name}
                                 span.caret
                             ul.dropdown-menu
+                                li
+                                    a(href="/account") Account
+                                li.divider(role="separator")
                                 li
                                     a(href="/logout") Logout
 
