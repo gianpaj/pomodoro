@@ -7,6 +7,7 @@
 ## New packages
 
 - [mongoose](http://mongoosejs.com/docs/guide.html) to connect to MongoDB
+- [connect-mongo](https://github.com/kcbanner/connect-mongo) to store sessions into MongoDB
 - [bcrypt-nodejs](https://www.npmjs.com/package/bcrypt-nodejs) to encrypt and decrypt passwords and not save them in plain text
 - [crypto](https://nodejs.org/api/crypto.html) (built into Node.js) to generate the md5 hash for the Gravatar image
 

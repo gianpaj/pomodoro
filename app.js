@@ -8,6 +8,7 @@ var session = require('express-session');
 var flash = require('connect-flash');
 var passport = require('passport');
 var mongoose = require('mongoose');
+var MongoStore = require('connect-mongo/es5')(session);
 
 var User = require('./models/User');
 
@@ -36,7 +37,11 @@ app.use(bodyParser.urlencoded({   // to support URL-encoded bodies
 app.use(session({
   secret: 'nPgedMGXm7DyPvJZFVzQxT5avVaCavxEKfFUTTr5s2NSaMMphTmuYUFdJRsZwcGS7UFpf8hFcrjkeuNQdJzxhdHRgBkMbk222cZa',
   resave: true,
-  saveUninitialized: true
+  saveUninitialized: true,
+  store: new MongoStore({
+    url: 'mongodb://localhost/pomodoro',
+    autoReconnect: true
+  })
 }));
 app.use(passport.initialize());
 // persistent login sessions
