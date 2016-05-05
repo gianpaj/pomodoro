@@ -7,7 +7,10 @@ block content
     hr
     .progress
         .progress-bar.progress-bar-danger.progress-bar-striped(role="progressbar", aria-valuenow="45", aria-valuemin="0", aria-valuemax="100", style="width: 45%")
-    h3.text-center(id="timer") 00:00
+    if user
+        h3.text-center(id="timer") #{user.pomodoroDefaultTime / 60}:00
+    else
+        h3.text-center(id="timer") 25:00
     button.startStop(id="start").btn.btn-success Start
     button.startStop(id="stop", style="display: none").btn.btn-danger Stop
     | &nbsp;
@@ -26,3 +29,6 @@ block content
                     .modal-footer
                         button.btn.btn-default(type="button", data-dismiss="modal") Nope
                         button.btn.btn-primary(type="button", id="registerBtn") Yes please
+
+    script.
+        var pomodoroDefaultTime = !{JSON.stringify(user.pomodoroDefaultTime)};

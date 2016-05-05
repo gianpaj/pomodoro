@@ -15,6 +15,7 @@ var userSchema = new mongoose.Schema({
   passwordResetToken: String,
   passwordResetExpires: Date,
   registrationDate: { type: Date, default: Date.now },
+  pomodoroDefaultTime: { type: Number, default: 1500 },
 
   tokens: Array,
 

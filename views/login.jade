@@ -32,6 +32,10 @@ block content
             hr
             form.form-horizontal(action='/account', method='POST')
                 .form-group
+                    label.col-sm-3.control-label(for='email') Pomodoro length
+                    .col-sm-7
+                        input.form-control(type='number', name='pomodoroDefaultTime', id='pomodoroDefaultTime', value='#{user.pomodoroDefaultTime / 60}', placeholder='minutes')
+                .form-group
                     label.col-sm-3.control-label(for='email') Email
                     .col-sm-7
                         input.form-control(type='email', name='email', id='email', value='#{user.email}')

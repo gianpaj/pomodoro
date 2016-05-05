@@ -152,7 +152,7 @@ app.post('/register', function(req, res, next) {
     var pomodoros = [];
     for (var i = 0; i < Number(req.body.pomodoros); i++) {
       pomodoros.push(new User.Pomodoro({
-    secondsLength: 1500
+        secondsLength: 1500
       }));
     }
     userDoc.pomodoros = pomodoros;
@@ -199,9 +199,9 @@ app.post('/account', passportConfig.isAuthenticated, function(req, res, next) {
     }
     user.email = req.body.email || '';
     user.profile.name = req.body.name || '';
-    user.profile.gender = req.body.gender || '';
     user.profile.location = req.body.location || '';
     user.profile.website = req.body.website || '';
+    user.pomodoroDefaultTime = req.body.pomodoroDefaultTime * 60 || 0;
     user.save(function(err) {
       if (err) {
         if (err.code === 11000) {
