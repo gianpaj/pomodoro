@@ -1,4 +1,4 @@
-/* globals moment, pomodoroDefaultTime */
+/* globals moment, pomodoroDefaultTime, logged */
 
 $(document).ready(function() {
   console.log('jQuery is loaded');
@@ -7,6 +7,13 @@ $(document).ready(function() {
   var timer;
   var $progressBar = $('.progress-bar');
   var $timer = $('#timer');
+
+  var pomodoroLength = 5;
+  if (typeof pomodoroDefaultTime !== 'undefined') {
+    pomodoroLength = pomodoroDefaultTime;
+  }
+  var aTimer = moment.duration(pomodoroLength, 'seconds');
+  $timer.text(moment(aTimer._data).format('mm:ss'));
 
   $('#start').click(function() {
     $('.startStop').toggle();
@@ -18,11 +25,6 @@ $(document).ready(function() {
       $progressBar.css('width', 0+'%').attr('aria-valuenow', 0);
       timer = moment.duration({ minute:0 });
       $timer.text('00:00');
-    }
-
-    var pomodoroLength = 1500;
-    if (pomodoroDefaultTime) {
-      pomodoroLength = pomodoroDefaultTime;
     }
 
     counterFn = setInterval(function () {
@@ -42,7 +44,9 @@ $(document).ready(function() {
           pomodoros = 0;
         }
         localStorage.setItem('pomodoros', ++pomodoros);
-        $('#registerModal').modal();
+        if (typeof logged == 'undefined') {
+          $('#registerModal').modal();
+        }
       }
     }, 1000);
   });
