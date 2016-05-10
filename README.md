@@ -2,21 +2,18 @@
 
 
 
-# Week 3
+# Week 4
 
 ## New packages
 
-- [mongoose](http://mongoosejs.com/docs/guide.html) to connect to MongoDB
-- [connect-mongo](https://github.com/kcbanner/connect-mongo) to store sessions into MongoDB
-- [bcrypt-nodejs](https://www.npmjs.com/package/bcrypt-nodejs) to encrypt and decrypt passwords and not save them in plain text
-- [crypto](https://nodejs.org/api/crypto.html) (built into Node.js) to generate the md5 hash for the Gravatar image
+none
 
 ## New instructions
 
 ### Install MongoDB
 
 1. Follow these instructions:
-  
+
     https://www.mongodb.org/downloads
 
 2. Start mongod process:
@@ -27,7 +24,7 @@
 
 Clone the repository from the branch of the third week
 
-    git clone --branch w3 git@github.com:gianpaj/pomodoro.git
+    git clone --branch w4 git@github.com:gianpaj/pomodoro.git
 
 Install NPM dependencies
 

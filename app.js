@@ -76,7 +76,7 @@ app.use(express.static(path.join(__dirname, 'public')));
  * Primary app route
  */
 app.get('/', function(req, res) {
-  res.render('home', { title: 'Pomodoro app - Codementor', header: 'We are on week three!' });
+  res.render('home', { title: 'Pomodoro app - Codementor', header: 'We are on week four!' });
 });
 
 /**
