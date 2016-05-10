@@ -10,7 +10,7 @@ $(document).ready(function() {
 
   var pomodoroLength = 5;
   if (typeof pomodoroDefaultTime !== 'undefined') {
-    pomodoroLength = pomodoroDefaultTime;
+    // pomodoroLength = pomodoroDefaultTime;
   }
   var aTimer = moment.duration(pomodoroLength, 'seconds');
   $timer.text(moment(aTimer._data).format('mm:ss'));
@@ -45,14 +45,25 @@ $(document).ready(function() {
         }
         localStorage.setItem('pomodoros', ++pomodoros);
         if (typeof logged == 'undefined') {
-          $('#registerModal').modal();
+          $('.modal-footer').show();
+          $('#modal').modal();
+        }
+        else {
+          $.post('/account/pomodoro', { length: pomodoroLength})
+          .done(function (result) {
+            console.log(result);
+          });
+          $('.modal-footer').hide();
+          $('.modal-title').text('Well done! Keep going');
+          $('.modal-body p').text('Another pomodoro in bag!');
+          $('#modal').modal();
         }
       }
     }, 1000);
   });
 
   $('#registerBtn').click(function () {
-    $('#registerModal').modal('hide');
+    $('#modal').modal('hide');
     window.location = '/register';
   });
 

@@ -188,6 +188,39 @@ app.get('/account', passportConfig.isAuthenticated, function(req, res) {
 });
 
 /**
+ * POST new pomodoro
+ */
+app.post('/account/pomodoro', passportConfig.isAuthenticated, function(req, res, next) {
+
+  User.findById(req.user.id, function(err, user) {
+    if (err) {
+      return next(err);
+    }
+    if (!user) {
+      return res.status(404).json({
+        error: 404,
+        msg: 'User error'
+      });
+    }
+
+    user.pomodoros.push(new User.Pomodoro({
+      secondsLength: req.body.length
+    }));
+
+    user.save(function(err) {
+      if (err) {
+        return next(err);
+      }
+      console.log('pomodor added. total:', user.pomodoros.length);
+      res.status(201).json({
+        error: null,
+        pomodoros: user.pomodoros.length
+      });
+    });
+  });
+});
+
+/**
  * POST Account
  */
 app.post('/account', passportConfig.isAuthenticated, function(req, res, next) {
