@@ -30,5 +30,6 @@ block content
                         button.btn.btn-default(type="button", data-dismiss="modal") Nope
                         button.btn.btn-primary(type="button", id="registerBtn") Yes please
 
-    script.
-        var pomodoroDefaultTime = !{JSON.stringify(user.pomodoroDefaultTime)};
+    if user
+        script.
+            var pomodoroDefaultTime = !{JSON.stringify(user.pomodoroDefaultTime)};
