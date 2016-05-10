@@ -5,14 +5,18 @@ block content
     h3= header
     p.lead A boilerplate for Node.js web applications.
     hr
-    .progress
-        .progress-bar.progress-bar-danger.progress-bar-striped(role="progressbar", aria-valuenow="45", aria-valuemin="0", aria-valuemax="100", style="width: 45%")
+    .text-center
+        .svg.radial-progress
+            svg(height="10em", width="10em")
+                circle.radial-progress-background(r="", cx="5em", cy="5em", fill="transparent", stroke-dasharray="0em", stroke-dashoffset="0em")
+                circle.radial-progress-cover(r="", cx="5em", cy="5em", fill="transparent", stroke-dasharray="0em", stroke-dashoffset="0")
+                circle.radial-progress-center(r="", cx="5em", cy="5em", fill="transparent", stroke-dasharray="0em", stroke-dashoffset="0em")
 
-    h3.text-center(id="timer")
-    button.startStop(id="start").btn.btn-success Start
-    button.startStop(id="stop", style="display: none").btn.btn-danger Stop
-    | &nbsp;
-    button(id="reset").btn.btn-default Reset
+        h3(id="timer")
+        button.startStop(id="start").btn.btn-success Start
+        button.startStop(id="stop", style="display: none").btn.btn-danger Stop
+        | &nbsp;
+        button(id="reset").btn.btn-default Reset
 
     .modal.fade(tabindex="-1", role="dialog", id="modal")
         .modal-dialog

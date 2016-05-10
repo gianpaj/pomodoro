@@ -8,9 +8,10 @@ $(document).ready(function() {
   var $progressBar = $('.progress-bar');
   var $timer = $('#timer');
 
+  // 25 min = 1500 seconds
   var pomodoroLength = 5;
   if (typeof pomodoroDefaultTime !== 'undefined') {
-    // pomodoroLength = pomodoroDefaultTime;
+    pomodoroLength = pomodoroDefaultTime;
   }
   var aTimer = moment.duration(pomodoroLength, 'seconds');
   $timer.text(moment(aTimer._data).format('mm:ss'));
@@ -28,14 +29,7 @@ $(document).ready(function() {
     }
 
     counterFn = setInterval(function () {
-      timer = moment.duration(timer.asSeconds() + 1, 'seconds');
-      $timer.text(moment(timer._data).format('mm:ss'));
-
-      var percentage = timer.asSeconds() * 100 / pomodoroLength;
-      $progressBar.css('width', percentage+'%').attr('aria-valuenow', percentage);
-
-      // 25 min = 1500 seconds
-      if (timer.asSeconds() > pomodoroLength) {
+      if (timer.asSeconds() > pomodoroLength-1) {
         clearInterval(counterFn);
         console.log('a pomodoro has passed');
         // add a completed pomodoro to localStorage
@@ -58,7 +52,18 @@ $(document).ready(function() {
           $('.modal-body p').text('Another pomodoro in bag!');
           $('#modal').modal();
         }
+        return;
       }
+
+      timer = moment.duration(timer.asSeconds() + 1, 'seconds');
+      $timer.text(moment(timer._data).format('mm:ss'));
+
+      var offset = -(circumference / pomodoroLength) * currentCount + 'em';
+      console.log(currentCount, offset);
+
+      document.querySelector('.radial-progress-cover').setAttribute('stroke-dashoffset', offset);
+
+      currentCount++;
     }, 1000);
   });
 
@@ -83,4 +88,18 @@ $(document).ready(function() {
   });
 
   $('#pomodoros').val(localStorage.getItem('pomodoros'));
+
+  // http://jsbin.com/wifole/33
+  var radius = 3; // set the radius of the circle
+  var circumference = 2 * radius * Math.PI;
+
+  var els = document.querySelectorAll('circle');
+  Array.prototype.forEach.call(els, function (el) {
+    el.setAttribute('stroke-dasharray', circumference+5 + 'em');
+    el.setAttribute('r', radius + 'em');
+  });
+
+  document.querySelector('.radial-progress-center').setAttribute('r', (radius - 0.01 + 'em'));
+
+  var currentCount = 1;
 });
