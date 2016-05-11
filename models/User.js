@@ -18,6 +18,7 @@ var userSchema = new mongoose.Schema({
   pomodoroDefaultTime: { type: Number, default: 1500 },
 
   tokens: Array,
+  facebook: String,
 
   profile: {
     name:     { type: String, default: '' },

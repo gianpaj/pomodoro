@@ -7,6 +7,7 @@
 ## New packages
 
 - [passport-facebook](https://github.com/jaredhanson/passport-facebook)
+- [lodash](https://lodash.com/)
 
 ## New instructions
 
