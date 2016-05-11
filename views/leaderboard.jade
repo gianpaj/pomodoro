@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    div.container
+        h1= title
+        h3= header
+        p.lead A boilerplate for Node.js web applications.
+        hr
+
+        table.table.table-stripe
+            thead
+                tr
+                    th #
+                    th Name
+                    th Pomodoros
+            tbody
+                each user, index in users
+                    tr
+                        td #{index+1}
+                        td= user.profile.name
+                        td= user.pomodoros.length

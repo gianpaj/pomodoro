@@ -165,7 +165,7 @@ exports.postPomodoro = function(req, res, next) {
       if (err) {
         return next(err);
       }
-      console.log('pomodor added. total:', user.pomodoros.length);
+      console.log('pomodoro added. total:', user.pomodoros.length);
       res.status(201).json({
         error: null,
         pomodoros: user.pomodoros.length

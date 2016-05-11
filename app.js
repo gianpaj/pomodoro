@@ -10,6 +10,8 @@ var passport = require('passport');
 var mongoose = require('mongoose');
 var MongoStore = require('connect-mongo/es5')(session);
 
+var User = require('./models/User');
+
 /**
  * Controllers (route handlers).
  */
@@ -103,6 +105,25 @@ app.get( '/account', passportConfig.isAuthenticated, userController.getAccount);
 app.post('/account', passportConfig.isAuthenticated, userController.postAccount);
 
 app.post('/account/pomodoro', passportConfig.isAuthenticated, userController.postPomodoro);
+
+app.get('/leaderboard', function (req, res) {
+  User
+    .find({pomodoros: { $gt: [] }})
+    .limit(10)
+    .sort({ pomodoros: -1 })
+    .select({ 'pomodoros': 1, 'profile.name': 1 })
+    .exec(function(err, users) {
+      if (!users) {
+        req.flash('errors', { msg: 'There are no registered users.' });
+        return res.redirect('/');
+      }
+      else if (!users[0].pomodoros.length) {
+        req.flash('errors', { msg: 'There are no users that have completed pomodoros.' });
+        return res.redirect('/');
+      }
+      res.render('leaderboard', { title: 'Pomodoro app - Codementor', users: users });
+    });
+});
 
 /**
  * OAuth authentication routes. (Sign in/Register)
