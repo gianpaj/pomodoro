@@ -4,8 +4,9 @@ $(document).ready(function() {
   console.log('jQuery is loaded');
 
   var counterFn;
+  var currentCount;
   var timer;
-  var $progressBar = $('.progress-bar');
+  var offset;
   var $timer = $('#timer');
 
   // 25 min = 1500 seconds
@@ -19,11 +20,8 @@ $(document).ready(function() {
   $('#start').click(function() {
     $('.startStop').toggle();
 
-    $progressBar.toggleClass('active');
-
     // reset progress bar and timer
     if (!timer) {
-      $progressBar.css('width', 0+'%').attr('aria-valuenow', 0);
       timer = moment.duration({ minute:0 });
       $timer.text('00:00');
     }
@@ -58,7 +56,7 @@ $(document).ready(function() {
       timer = moment.duration(timer.asSeconds() + 1, 'seconds');
       $timer.text(moment(timer._data).format('mm:ss'));
 
-      var offset = -(circumference / pomodoroLength) * currentCount + 'em';
+      offset = -(circumference / pomodoroLength) * currentCount + 'em';
       // console.log(currentCount, offset);
 
       document.querySelector('.radial-progress-cover').setAttribute('stroke-dashoffset', offset);
@@ -74,14 +72,15 @@ $(document).ready(function() {
 
   $('#stop').click(function() {
     $('.startStop').toggle();
-    $progressBar.toggleClass('active');
     clearInterval(counterFn);
   });
 
   $('#reset').click(function() {
     $('#stop').hide();
     $('#start').show();
-    $progressBar.css('width', 0+'%').attr('aria-valuenow', 0);
+    offset = 0;
+    currentCount= 0;
+    document.querySelector('.radial-progress-cover').setAttribute('stroke-dashoffset', offset);
     timer = moment.duration({ minute:0 });
     $timer.text('00:00');
     clearInterval(counterFn);
