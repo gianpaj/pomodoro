@@ -181,6 +181,14 @@ app.post('/register', function(req, res, next) {
 });
 
 /**
+ * OAuth authentication routes. (Sign in/Register)
+ */
+app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email', 'user_location'] }));
+app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }), function(req, res) {
+  res.redirect(req.session.returnTo || '/');
+});
+
+/**
  * GET Account
  */
 app.get('/account', passportConfig.isAuthenticated, function(req, res) {

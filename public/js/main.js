@@ -59,7 +59,7 @@ $(document).ready(function() {
       $timer.text(moment(timer._data).format('mm:ss'));
 
       var offset = -(circumference / pomodoroLength) * currentCount + 'em';
-      console.log(currentCount, offset);
+      // console.log(currentCount, offset);
 
       document.querySelector('.radial-progress-cover').setAttribute('stroke-dashoffset', offset);
 

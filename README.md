@@ -6,7 +6,7 @@
 
 ## New packages
 
-none
+- [passport-facebook](https://github.com/jaredhanson/passport-facebook)
 
 ## New instructions
 

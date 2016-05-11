@@ -50,3 +50,15 @@ circle {
 }
 
 /* http://jsbin.com/wifole/33 - END */
+
+.btn-fb {
+  background-color: #3B5998;
+  color: #fff;
+  border-color: rgba(0,0,0,0.2);
+}
+.btn-fb:hover,
+.btn-fb.active,
+.btn-fb:active {
+  color: #fff;
+  background-color: #2d4373;
+}
