@@ -1,6 +1,6 @@
-## Screenshots
+## Screenshot of final app on Week 4
 
-
+![Pomodoro screenshot week 4](pomodoro_app.png)
 
 # Week 4
 
