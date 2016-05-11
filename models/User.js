@@ -54,6 +54,9 @@ userSchema.pre('save', function(next) {
  * Helper method for validating user's password.
  */
 userSchema.methods.comparePassword = function(candidatePassword, cb) {
+  if (!this.password) {
+    return cb('password not stored. Probably using a Single sign on authentication like Facebook', false);
+  }
   bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
     cb(err, isMatch);
   });
