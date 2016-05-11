@@ -62,8 +62,8 @@ app.use(function(req, res, next) {
 });
 
 app.use(function(req, res, next) {
-  // After successful login, redirect back to /api, /contact or /
-  if (/(api)|(contact)|(^\/$)/i.test(req.path)) {
+  // After successful login, redirect back to /account or /
+  if (/(account)|(^\/$)/i.test(req.path)) {
     req.session.returnTo = req.path;
   }
   next();
@@ -99,8 +99,8 @@ app.get( '/logout',   userController.getLogout);
 app.get( '/register', userController.getRegister);
 app.post('/register', userController.postRegister);
 
-app.get( '/account', passportConfig.isAuthenticated, passportConfig.isAuthorized, userController.getAccount);
-app.post('/account', passportConfig.isAuthenticated, passportConfig.isAuthorized, userController.postAccount);
+app.get( '/account', passportConfig.isAuthenticated, userController.getAccount);
+app.post('/account', passportConfig.isAuthenticated, userController.postAccount);
 
 app.post('/account/pomodoro', passportConfig.isAuthenticated, userController.postPomodoro);
 
