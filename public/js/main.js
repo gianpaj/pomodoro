@@ -4,7 +4,6 @@ $(document).ready(function() {
   console.log('jQuery is loaded');
 
   var counterFn;
-  var currentCount;
   var timer;
   var offset;
   var $timer = $('#timer');
@@ -41,10 +40,11 @@ $(document).ready(function() {
           $('#modal').modal();
         }
         else {
-          $.post('/account/pomodoro', { length: pomodoroLength})
-          .done(function (result) {
-            console.log(result);
-          });
+          // jQuery POST request
+          $.post('/account/pomodoro', { length: pomodoroLength })
+            .done(function (result) {
+              console.log(result);
+            });
           $('.modal-footer').hide();
           $('.modal-title').text('Well done! Keep going');
           $('.modal-body p').text('Another pomodoro in bag!');

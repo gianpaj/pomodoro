@@ -157,6 +157,7 @@ exports.postPomodoro = function(req, res, next) {
       });
     }
 
+    // add pomodoro to user's pomodoro array
     user.pomodoros.push(new User.Pomodoro({
       secondsLength: req.body.length
     }));
