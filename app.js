@@ -110,7 +110,7 @@ app.get('/leaderboard', function (req, res) {
   User
     .find({pomodoros: { $gt: [] }})
     .limit(10)
-    .sort({ pomodoros: -1 })
+    .sort({ pomodoros: 1 })
     .select({ 'pomodoros': 1, 'profile.name': 1 })
     .exec(function(err, users) {
       if (!users) {
